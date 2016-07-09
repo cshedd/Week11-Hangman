@@ -2,7 +2,7 @@ var Letter = function(let) {
 
 //make character property 
 
-this.charac = let;
+this.charac = let.toLowerCase();
 
 //make appear property
 
@@ -11,13 +11,9 @@ this.appear = false;
 //make letterRender property
 
 this.letterRender = function(){
-	if(this.appear === true){
+	if(this.appear) {
 		return this.charac;
-	} else if (this.charac === " ") {
-		this.appear === true;
-		return this.charac;
-	} else {
-		return "_";
+	} else {return "_"; 
 	}
 }
 

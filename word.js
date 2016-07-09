@@ -3,48 +3,38 @@ var Letter = require('./letter.js');
 
 var Word = function(wrd){
 	//set a property called word and set it equal to what you think it should be
-	var wordVar = wrd;
+	// var wordVar = wrd;
 
 	//set a property called lets to an empty array. We will eventually push letter objects in here
 	this.word = wrd;
 	this.lets = [];
-	var lengthOfLets= this.lets.length;
-
+	
 	//set a property called found to false
 	this.found = false;
-
-	var letterofThis = null;
 
 	//make a property called getLets, set it to a function and inside the function loop over the word property and push letter objects into the lets property.
 
 	this.getLets = function() {
-		var isLetter = /([a-z] | [A-Z])/;
-		for(i = 0; i < wordVar.length; i++) {
-			if(isLetter.test(wordVar[i].toString())){
-				this.newVariable = new Letter(wordVar[i]);
-				this.lets.push(this.newVariable);
-				var resultOfRender = this.newVariable.letterRender();
+		for(i = 0; i < this.word.length; i++) {
+			this.lets.push(new Letter (this.word[i]));
 			}
-		}
 	};
 
 	//returns ture or false whether we found the current word or not
+	
 	this.didWeFindTheWord = function() {
 		//set the found property to true or false based on whether all the letters have been found or not
-		var itsFoundCount = 0;
+		//can be simplified into this rather than previous commit
+		found = true;
 
-		for(var i = 0; i < this.lets.length; i++){
-			if(this.lets[i].appear == true) {
-				itsFoundCount++;
+		for(i = 0; i < this.lets.length; i++)
+		{
+			if(this.lets[i].appear == false) {
+				found = false;
 			}
 		}
-		if(itsFoundCount === this.lets.length) {
-			this.found = true;
-		} else {
-			this.found = false;
-		};
 
-		return this.found;
+		return found;
 	};
 
 	this.checkIfLetterFound = function(guessLetter) {
@@ -53,7 +43,7 @@ var Word = function(wrd){
 
 		//loop over the lets property and if the letter object's charac property equals the guessletter then set the appear property of the letter object to be true. Also increment whatToReturn.
 		for(q = 0; q < this.lets.length; q++) {
-			if(guessletter == this.lets[q].charac) {
+			if(this.lets[q].charac == guessLetter.toLowerCase()) {
 				this.lets[q].appear = true;
 				whatToReturn++;
 			}

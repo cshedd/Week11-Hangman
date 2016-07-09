@@ -57,8 +57,8 @@ game = {
 		    	self.keepPromptingUser();
 		    }
 		    else if(self.guessesRemaining == 0){
-		    	console.log('Game over bro it was ', self.currentWrd.word);
-		    	console.log('Get with the program man');
+		    	console.log('Game over ya fruitloop, it was ', self.currentWrd.word);
+		    	console.log('You lost and must hate fruit');
 		    }else{
 		    	console.log(self.currentWrd.wordRender());
 		    }
